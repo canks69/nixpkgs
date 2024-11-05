@@ -1,5 +1,5 @@
 {
-  description = "Gifa's home";
+  description = "Canks home";
 
   inputs = {
     # Package sets
@@ -38,11 +38,11 @@
           {
             nixpkgs = nixpkgsConfig;
 
-            # Configure default shell for gifaeriyanto to fish
-            users.users.gifaeriyanto.shell = pkgs.fish;
+            # Configure default shell for canks to fish
+            users.users.canks.shell = pkgs.fish;
             # Somehow this 👆 doesn't work.
             # So I did this instead: https://stackoverflow.com/a/26321141/3187014
-            # 
+            #
             # ```shell
             # $ sudo sh -c "echo $(which fish) >> /etc/shells"
             # $ chsh -s $(which fish)
@@ -51,28 +51,28 @@
             # `home-manager` config
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.gifaeriyanto = import ./home;
+            home-manager.users.canks = import ./home;
           }
         )
       ];
     in
     {
       darwinConfigurations = {
-        gifaeriyanto-mac = darwinSystem {
+        canks-mac = darwinSystem {
           # system = "x86_64-darwin"; // if using intel
           system = "aarch64-darwin";
           modules = nixDarwinCommonModules ++ [
             {
-              networking.computerName = "Gifa Eriyanto MacBook Pro";
-              networking.hostName = "gifaeriyanto-mac";
+              networking.computerName = "Canks Pro";
+              networking.hostName = "canks-mac";
             }
           ];
         };
       };
 
       darwinModules = {
-        gifa-system = import ./modules/darwin/system.nix;
-        gifa-homebrew = import ./modules/darwin/homebrew.nix;
+        canks-system = import ./modules/darwin/system.nix;
+        canks-homebrew = import ./modules/darwin/homebrew.nix;
 
         programs-nix-index =
           # Additional configuration for `nix-index` to enable `command-not-found` functionality with Fish.
@@ -83,7 +83,7 @@
               # TODO: split below Fish configuration calls to always apply regardless of nix-index.enable settings above
               # https://fishshell.com/docs/3.5/interactive.html?highlight=fish_vi_key_bindings#vi-mode-commands
               # TODO: https://fishshell.com/docs/3.5/language.html#wildcards-globbing
-              programs.fish.interactiveShellInit = ''  
+              programs.fish.interactiveShellInit = ''
                 function __fish_command_not_found_handler --on-event="fish_command_not_found"
                   ${if config.programs.fish.useBabelfish then ''
                   command_not_found_handle $argv

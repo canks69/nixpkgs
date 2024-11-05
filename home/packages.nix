@@ -10,7 +10,7 @@
     # You can update Home Manager without changing this value. See
     # the Home Manager release notes for a list of state version
     # changes in each release.
-    stateVersion = "22.05";
+    stateVersion = "23.05";
 
     # Environment variables to always set at login.
     # https://nix-community.github.io/home-manager/options.html#opt-home.sessionVariables
@@ -21,17 +21,17 @@
     };
 
     packages = with pkgs; [
-      ################################## 
+      ##################################
       # Common
-      ################################## 
+      ##################################
       curl
       wget
       tree
       gnupg
 
-      ################################## 
+      ##################################
       # Nix-related Packages
-      ################################## 
+      ##################################
       cachix # to store cache binaries on cachix.org
       nix-prefetch-git # to get git signatures for fetchFromGit
 

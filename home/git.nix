@@ -1,17 +1,17 @@
 { ... }:
 
 let
-  gifaeriyanto = {
-    name = "Gifa Eriyanto";
-    email = "gifa.eriyanto@gmail.com";
-    signingKey = "78621E1AED00697E";
+  canks = {
+    name = "Canks";
+    email = "canks.official@gmail.com";
+    signingKey = "78B9097234BDFB9A";
   };
 
   gitDefaultConfig = {
     contents = {
-      user = gifaeriyanto;
+      user = canks;
       init = {
-        defaultBranch = "main";
+        defaultBranch = "master";
       };
     };
   };
@@ -20,11 +20,11 @@ in
   programs = {
     git = {
       enable = true;
-      userName = gifaeriyanto.name;
-      userEmail = gifaeriyanto.email;
+      userName = canks.name;
+      userEmail = canks.email;
 
       signing = {
-        key = gifaeriyanto.signingKey;
+        key = canks.signingKey;
         signByDefault = true;
         gpgPath = "gpg";
       };

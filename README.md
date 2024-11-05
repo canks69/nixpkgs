@@ -1,4 +1,4 @@
-# Gifa's Home
+# Canks Home
 
 My Nix configs to setup all of my devices. Usually we take some minutes/hours/days to setup our new laptop to make it ready to use. But now, I solved it with Nix. Just need to run my Nix config, and all done.
 
@@ -55,7 +55,28 @@ nix build .#darwinConfigurations.gifaeriyanto-mac.system
 
 Import profile, [here](https://gist.github.com/gifaeriyanto/1c2cfea240fdcf9360afe9cb51ae5a4b) is my JSON profile.
 
-### Import GPG Keys
+### Instal & Import GPG Keys
+
+Install GPG
+```
+brew install gpg
+```
+
+Create new key
+```
+# generate key
+gpg --full-generate-key
+
+# get the public key using key ID
+gpg --armor --export XXXXXX
+
+# set the key ID in git
+git config --global user.signingkey XXXXXXX
+
+# always sign commits
+git config commit.gpgsign true
+```
+
 
 For **Public Key**
 
